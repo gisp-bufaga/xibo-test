@@ -1,5 +1,5 @@
 # Usa un'immagine di base Debian per Raspberry Pi 5 (ARM64)
-FROM debian:bookworm
+FROM balenalib/raspberrypi4-64-debian:latest
 
 # Imposta la variabile d'ambiente per X
 ENV DISPLAY=:0
