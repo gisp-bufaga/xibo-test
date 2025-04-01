@@ -1,18 +1,18 @@
-# Usa un'immagine di base Debian per Raspberry Pi 5 (ARM64)
-FROM balenalib/raspberrypi4-64-debian:latest
+# Usa Debian ARM64 ufficiale per compatibilità con Raspberry Pi 5
+FROM debian:bookworm
 
-# Imposta la variabile d'ambiente per X
+# Imposta variabili d'ambiente
 ENV DISPLAY=:0
+ENV DEBIAN_FRONTEND=noninteractive
 
-# Installa pacchetti necessari
+# Installa pacchetti necessari per Xorg e Xibo Player
 RUN apt-get update && apt-get install -y \
-    wget curl sudo xserver-xorg x11-xserver-utils xinit \
-    mesa-utils libgles2-mesa \
-    libnss3 libxcomposite1 libxcursor1 libxi6 libxrandr2 libxss1 libxtst6 \
-    dbus-x11 libasound2 \
+    wget curl sudo xserver-xorg x11-xserver-utils xinit mesa-utils \
+    libgles2-mesa libnss3 libxcomposite1 libxcursor1 libxi6 \
+    libxrandr2 libxss1 libxtst6 dbus-x11 libasound2 \
     && apt-get clean
 
-# Crea una cartella di lavoro
+# Crea una cartella di lavoro per Xibo
 WORKDIR /opt/xibo
 
 # Scarica il Player Xibo per Linux (se disponibile per ARM)
@@ -26,4 +26,5 @@ RUN chmod +x xibo-player
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
+# Comando di default
 CMD ["/start.sh"]
