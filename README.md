@@ -1,3 +1,3 @@
 # xibo-test
 
-Test di integrazione CMS Xibo tramite player Chromium gestito su docker
+Test di integrazione CMS Xibo tramite player su docker
