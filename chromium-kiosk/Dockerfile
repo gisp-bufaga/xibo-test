@@ -1,5 +1,6 @@
 # Usa Debian ARM64 ufficiale per compatibilità con Raspberry Pi 5
-FROM debian:bookworm
+FROM balenalib/raspberrypi4-64-debian:latest
+
 
 # Imposta variabili d'ambiente
 ENV DISPLAY=:0
