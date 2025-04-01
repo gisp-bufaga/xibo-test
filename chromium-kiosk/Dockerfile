@@ -1,4 +1,4 @@
-FROM debian:bookworm
+FROM balenalib/raspberrypi4-64-debian:latest
 
 # Imposta variabili d'ambiente
 ENV DISPLAY=:0
@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /opt/xibo
 
 # Scarica il Player Xibo per Linux (se disponibile per ARM)
-RUN wget -O xibo-player.tar.gz https://github.com/xibosignage/xibo-linux/releases/latest/download/xibo-player.tar.gz \
+RUN wget -O xibo-player.tar.gz https://github.com/xibosignage/xibo-linux/ \
     && tar -xvzf xibo-player.tar.gz --strip-components=1
 
 # Rendi eseguibile il player
