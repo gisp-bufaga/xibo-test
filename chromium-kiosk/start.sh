@@ -1,10 +1,11 @@
 #!/bin/bash
-
-# Set display
 export DISPLAY=:0
 
-# Hide mouse cursor
-unclutter &
+# Avvia il server X
+Xorg -noreset +extension GLX +extension RANDR +extension RENDER &
 
-# Start Chromium in kiosk mode
-chromium --no-sandbox --kiosk --incognito --disable-pinch --overscroll-history-navigation=0 "$LAUNCH_URL"
+# Aspetta 5 secondi per sicurezza
+sleep 5
+
+# Avvia Xibo Player
+/opt/xibo/xibo-player
